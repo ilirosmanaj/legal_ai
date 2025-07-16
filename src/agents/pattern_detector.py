@@ -9,7 +9,7 @@ from src.clients import LLMClient
 @dataclass
 class PatternDetectorConfig:
     confidence_threshold: float = 0.8
-    llm_model: str = "claude-3-opus"
+    llm_model: str = "claude-opus-4-20250514"
     temperature: float = 0
 
 
@@ -410,7 +410,7 @@ class LLMPatternDetector:
 
     def _initialize_llm(self):
         """Initialize LLM client using the shared LLMClient class"""
-        return LLMClient(model=self.config.llm_model, temperature=self.config.temperature)
+        return LLMClient(temperature=self.config.temperature)
 
 
 if __name__ == "__main__":
