@@ -137,6 +137,7 @@ class PatternDetector:
         - Naming variations for same logical sections
         - Formatting conventions (how sections are marked)
         - Hierarchical patterns
+        - Section with case title should hae the actual title in the canonical name, not "CASE TITLE"
 
         Return as JSON:
         {{
@@ -281,7 +282,7 @@ class PatternDetector:
         Analyze how variables/entities are used across these legal documents.
 
         Entity usage data with raw context:
-        {json.dumps(entity_contexts[:50], indent=2)}  # Limit for LLM
+        {json.dumps(entity_contexts, indent=2)}  # Limit for LLM
 
         For each variable type, determine:
         1. Consistent patterns in how they appear in text
@@ -295,7 +296,7 @@ class PatternDetector:
         - How parties are referenced after first mention
         - Standard formats for each variable type
 
-        Return as JSON:
+        Return as valid loadable JSON:
         {{
             "variable_definitions": {{
                 "plaintiff_name": {{
@@ -346,12 +347,11 @@ class PatternDetector:
         for doc in prepared_docs["documents"]:
             # Focus on sections likely to contain legal language
             legal_sections = [
-                "LEGAL_GROUNDS",
-                "LEGAL GROUNDS",
                 "STATEMENT OF CLAIM",
-                "RELIEF SOUGHT",
                 "CLAIMS",
+                "LEGAL GROUNDS",
                 "LEGAL ARGUMENTS",
+                "RELIEF SOUGHT",
             ]
 
             for section_path, content in doc["section_mapping"].items():
@@ -360,7 +360,7 @@ class PatternDetector:
                         {
                             "doc_id": doc["id"],
                             "section": section_path,
-                            "content": content[:1500],  # First 1500 chars
+                            "content": content[:1500],
                             "legal_refs": [ref["text"] for ref in doc["parsed"]["entities"].get("legal_refs", [])],
                         }
                     )

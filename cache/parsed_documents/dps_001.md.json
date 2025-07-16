@@ -1,0 +1,946 @@
+{
+  "parsed": {
+    "doc_id": "dps_001.md",
+    "type": "dismissal_protection_suit",
+    "metadata": {
+      "case_number": "DPS-2024-001",
+      "court": {
+        "name": "Labor Court Munich",
+        "location": "Munich, Germany",
+        "type": "labor"
+      },
+      "filing_date": "2024-03-15",
+      "jurisdiction": "Germany",
+      "applicable_laws": [],
+      "document_status": "filed",
+      "deadlines": [
+        {
+          "date": "2024-02-28",
+          "description": "Contested dismissal effective date"
+        }
+      ],
+      "reference_numbers": [
+        "EMP-2019-0847"
+      ],
+      "language": "English",
+      "procedural_stage": "initial filing",
+      "extraction_timestamp": "2025-07-16T22:13:31.976517",
+      "document_statistics": {
+        "word_count": 533,
+        "section_count": 0
+      }
+    },
+    "structure": {
+      "id": "document_root",
+      "title": "Document Root",
+      "level": 0,
+      "purpose": "To formally initiate a dismissal protection suit, outlining the parties, factual and legal grounds, relief sought, supporting evidence, and legal representation in a labor dispute regarding the termination of employment.",
+      "content": "",
+      "subsections": [
+        {
+          "id": "case_information",
+          "title": "DISMISSAL PROTECTION SUIT",
+          "level": 1,
+          "purpose": "Identifies the document as a legal complaint regarding dismissal protection and provides essential case metadata.",
+          "content": "**Case No.:** DPS-2024-001\n**Court:** Labor Court Munich\n**Date Filed:** March 15, 2024\n\n---\n\n## PLAINTIFF\n**Name:** Maria Schmidt\n**Address:** Maximilianstra\u00dfe 45, 80538 Munich, Germany\n**Employee ID..."
+        },
+        {
+          "id": "plaintiff",
+          "title": "PLAINTIFF",
+          "level": 1,
+          "purpose": "Identifies the employee (plaintiff) bringing the suit and provides personal and employment details.",
+          "content": "**Name:** Maria Schmidt\n**Address:** Maximilianstra\u00dfe 45, 80538 Munich, Germany\n**Employee ID:** EMP-2019-0847\n**Position:** Senior Software Developer\n**Department:** Engineering\n**Hire Date:** June 1..."
+        },
+        {
+          "id": "defendant",
+          "title": "DEFENDANT",
+          "level": 1,
+          "purpose": "Identifies the employer (defendant) and their legal/HR representatives.",
+          "content": "**Company:** TechCorp GmbH\n**Address:** Leopoldstra\u00dfe 123, 80802 Munich, Germany\n**Legal Representative:** Dr. Hans Mueller, Attorney\n**HR Contact:** Sarah Weber, HR Director\n\n---"
+        },
+        {
+          "id": "statement_of_claim",
+          "title": "STATEMENT OF CLAIM",
+          "level": 1,
+          "purpose": "Sets out the factual background, legal arguments, and specific relief sought by the plaintiff.",
+          "content": "### I. FACTUAL BACKGROUND\n\n1. **Employment Relationship**\n   - The Plaintiff was employed by Defendant as a Senior Software Developer from June 1, 2019, until the contested dismissal on February 28, 2..."
+        },
+        {
+          "id": "supporting_evidence",
+          "title": "SUPPORTING EVIDENCE",
+          "level": 1,
+          "purpose": "Lists documentary and testimonial evidence supporting the plaintiff's claims.",
+          "content": "### Documents Attached:\n- A. Employment Contract dated May 20, 2019\n- B. Dismissal Notice dated February 1, 2024\n- C. Performance Evaluations 2019-2023\n- D. Company Organizational Chart showing new hi..."
+        },
+        {
+          "id": "conclusion",
+          "title": "CONCLUSION",
+          "level": 1,
+          "purpose": "Summarizes the plaintiff's position and reiterates the legal and factual basis for the requested relief.",
+          "content": "The dismissal of Maria Schmidt was unlawful and violated both substantive and procedural requirements of German employment law. The Defendant's actions constitute a clear breach of the Dismissal Prote..."
+        },
+        {
+          "id": "attorney_signature",
+          "title": "Attorney for Plaintiff",
+          "level": 1,
+          "purpose": "Identifies the plaintiff's legal counsel and provides contact information, date, and signature.",
+          "content": ""
+        }
+      ]
+    },
+    "entities": {
+      "persons": [
+        {
+          "text": "Dr. Elisabeth Hoffmann",
+          "confidence": 1.0,
+          "role": "attorney_for_plaintiff",
+          "context": "attorney representing plaintiff",
+          "metadata": {
+            "relationships": [
+              "represents: Maria Schmidt",
+              "works_at: Hoffmann & Associates"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Dr. Hans Mueller",
+          "confidence": 1.0,
+          "role": "defendant_legal_representative",
+          "context": "attorney representing defendant",
+          "metadata": {
+            "relationships": [
+              "represents: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Maria Schmidt",
+          "confidence": 1.0,
+          "role": "plaintiff",
+          "context": "employee filing suit",
+          "metadata": {
+            "relationships": [
+              "employed_by: TechCorp GmbH",
+              "represented_by: Dr. Elisabeth Hoffmann"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Sarah Weber",
+          "confidence": 1.0,
+          "role": "defendant_hr_contact",
+          "context": "HR Director for defendant",
+          "metadata": {
+            "relationships": [
+              "hr_director_of: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Plaintiff",
+          "confidence": 0.98,
+          "role": "plaintiff",
+          "context": "employee filing suit; Senior Software Developer",
+          "metadata": {
+            "relationships": [
+              "employed_by: Defendant",
+              "position: Senior Software Developer",
+              "salary: \u20ac6,500",
+              "dismissed_by: Defendant"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        },
+        {
+          "text": "Thomas Fischer",
+          "confidence": 0.95,
+          "role": "witness",
+          "context": "former HR manager, aware of hiring decisions",
+          "metadata": {
+            "relationships": [
+              "former_hr_manager_at: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Klaus Weber",
+          "confidence": 0.95,
+          "role": "witness",
+          "context": "former team lead, can testify to plaintiff's performance",
+          "metadata": {
+            "relationships": [
+              "former_team_lead_of: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Anna M\u00fcller",
+          "confidence": 0.95,
+          "role": "witness",
+          "context": "works council representative",
+          "metadata": {
+            "relationships": [
+              "works_council_representative_at: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Defendant",
+          "confidence": 0.9,
+          "role": "defendant",
+          "context": "employer alleged to have unlawfully dismissed Maria Schmidt",
+          "metadata": {
+            "relationships": [
+              "employer_of: Maria Schmidt"
+            ],
+            "section": "CONCLUSION"
+          }
+        }
+      ],
+      "organizations": [
+        {
+          "text": "Hoffmann & Associates",
+          "confidence": 1.0,
+          "role": "law_firm",
+          "context": "law firm representing plaintiff",
+          "metadata": {
+            "relationships": [
+              "employs: Dr. Elisabeth Hoffmann"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "TechCorp GmbH",
+          "confidence": 1.0,
+          "role": "defendant",
+          "context": "employer and defendant in the case",
+          "metadata": {
+            "relationships": [
+              "employs: Maria Schmidt",
+              "represented_by: Dr. Hans Mueller",
+              "has_hr_contact: Sarah Weber"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Defendant",
+          "confidence": 0.98,
+          "role": "defendant",
+          "context": "employer; party issuing dismissal and subject to claim",
+          "metadata": {
+            "relationships": [
+              "employer_of: Plaintiff",
+              "issued_dismissal_to: Plaintiff",
+              "hired: three new developers",
+              "subject_to: Dismissal Protection Act (KSchG)",
+              "subject_to: \u00a7 622 BGB"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        },
+        {
+          "text": "works council",
+          "confidence": 0.95,
+          "role": "employee_representative_body",
+          "context": "employee representation body at defendant company",
+          "metadata": {
+            "relationships": [
+              "consultation_required_by: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Engineering",
+          "confidence": 0.93,
+          "role": "department",
+          "context": "department of employment",
+          "metadata": {
+            "relationships": [
+              "employs: Maria Schmidt"
+            ],
+            "section": "PLAINTIFF"
+          }
+        }
+      ],
+      "dates": [
+        {
+          "text": "February 28, 2024",
+          "confidence": 1.0,
+          "role": "dismissal_date",
+          "context": "termination date of employment",
+          "normalized": "2024-02-28",
+          "metadata": {
+            "relationships": [
+              "dismissal_of: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "February 1, 2024",
+          "confidence": 1.0,
+          "role": "dismissal_notice_date",
+          "context": "date dismissal notice was issued",
+          "normalized": "2024-02-01",
+          "metadata": {
+            "relationships": [
+              "dismissal_notice_for: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "March 15, 2024",
+          "confidence": 1.0,
+          "role": "date_filed",
+          "context": "date the case was filed",
+          "normalized": "2024-03-15",
+          "metadata": {
+            "relationships": [
+              "filed_for: DPS-2024-001"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "March 1, 2024",
+          "confidence": 1.0,
+          "role": "salary_continuation_start",
+          "context": "date from which continued salary is sought",
+          "normalized": "2024-03-01",
+          "metadata": {
+            "relationships": [
+              "salary_claimed_by: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "June 1, 2019",
+          "confidence": 1.0,
+          "role": "hire_date",
+          "context": "date plaintiff was hired",
+          "normalized": "2019-06-01",
+          "metadata": {
+            "relationships": [
+              "hire_date_of: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "May 20, 2019",
+          "confidence": 0.98,
+          "role": "contract_date",
+          "context": "date of written employment contract",
+          "normalized": "2019-05-20",
+          "metadata": {
+            "relationships": [
+              "contract_between: Plaintiff, Defendant"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        }
+      ],
+      "monetary": [
+        {
+          "text": "\u20ac39,000",
+          "confidence": 1.0,
+          "role": "severance_amount",
+          "context": "severance compensation sought (6 months' salary)",
+          "normalized": {
+            "amount": 39000,
+            "currency": "EUR"
+          },
+          "metadata": {
+            "relationships": [
+              "severance_claimed_by: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "\u20ac6,500",
+          "confidence": 1.0,
+          "role": "monthly_salary",
+          "context": "plaintiff's monthly gross salary",
+          "normalized": {
+            "amount": 6500,
+            "currency": "EUR"
+          },
+          "metadata": {
+            "relationships": [
+              "salary_of: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "attorney's fees",
+          "confidence": 0.9,
+          "role": "legal_costs",
+          "context": "costs sought as part of relief",
+          "metadata": {
+            "relationships": [
+              "fees_claimed_by: Plaintiff"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        },
+        {
+          "text": "court costs",
+          "confidence": 0.9,
+          "role": "legal_costs",
+          "context": "costs sought as part of relief",
+          "metadata": {
+            "relationships": [
+              "costs_claimed_by: Plaintiff"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        }
+      ],
+      "legal_refs": [
+        {
+          "text": "Dismissal Protection Act (KSchG)",
+          "confidence": 1.0,
+          "role": "statute",
+          "context": "law governing dismissal protection",
+          "normalized": "K\u00fcndigungsschutzgesetz (KSchG) - Dismissal Protection Act",
+          "metadata": {
+            "relationships": [
+              "violated_by: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "\u00a7 1 Abs. 3 KSchG",
+          "confidence": 1.0,
+          "role": "statute_section",
+          "context": "section of Dismissal Protection Act regarding social selection criteria",
+          "normalized": "Section 1(3) of K\u00fcndigungsschutzgesetz (KSchG) - Dismissal Protection Act",
+          "metadata": {
+            "relationships": [
+              "part_of: Dismissal Protection Act (KSchG)"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "\u00a7 1 KSchG",
+          "confidence": 1.0,
+          "role": "statute_section",
+          "context": "section of Dismissal Protection Act regarding operational necessity",
+          "normalized": "Section 1 of K\u00fcndigungsschutzgesetz (KSchG) - Dismissal Protection Act",
+          "metadata": {
+            "relationships": [
+              "part_of: Dismissal Protection Act (KSchG)"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "\u00a7 622 BGB",
+          "confidence": 1.0,
+          "role": "statute_section",
+          "context": "section of German Civil Code regarding notice periods",
+          "normalized": "Section 622 of B\u00fcrgerliches Gesetzbuch (BGB) - German Civil Code",
+          "metadata": {
+            "relationships": [],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Dismissal Protection Act",
+          "confidence": 0.97,
+          "role": "statute",
+          "context": "law allegedly breached by Defendant",
+          "normalized": "K\u00fcndigungsschutzgesetz (KSchG) - German Dismissal Protection Act",
+          "metadata": {
+            "relationships": [
+              "breached_by: Defendant"
+            ],
+            "section": "CONCLUSION"
+          }
+        },
+        {
+          "text": "Dismissal Notice dated February 1, 2024",
+          "confidence": 0.95,
+          "role": "evidence",
+          "context": "notice of termination of employment",
+          "normalized": {
+            "date": "2024-02-01"
+          },
+          "metadata": {
+            "relationships": [],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        },
+        {
+          "text": "Employment Contract dated May 20, 2019",
+          "confidence": 0.95,
+          "role": "evidence",
+          "context": "employment contract between plaintiff and employer",
+          "normalized": {
+            "date": "2019-05-20"
+          },
+          "metadata": {
+            "relationships": [],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        },
+        {
+          "text": "Salary Statements and Benefits Documentation",
+          "confidence": 0.9,
+          "role": "evidence",
+          "context": "proof of salary and benefits",
+          "metadata": {
+            "relationships": [],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        },
+        {
+          "text": "Performance Evaluations 2019-2023",
+          "confidence": 0.9,
+          "role": "evidence",
+          "context": "employee performance records",
+          "normalized": {
+            "date_range": [
+              "2019-01-01",
+              "2023-12-31"
+            ]
+          },
+          "metadata": {
+            "relationships": [],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        },
+        {
+          "text": "Works Council Meeting Minutes",
+          "confidence": 0.9,
+          "role": "evidence",
+          "context": "records of works council meetings",
+          "metadata": {
+            "relationships": [
+              "related_to: Works Council"
+            ],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        },
+        {
+          "text": "Company Organizational Chart",
+          "confidence": 0.85,
+          "role": "evidence",
+          "context": "shows company structure and new hires",
+          "metadata": {
+            "relationships": [],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        }
+      ],
+      "case_numbers": [
+        {
+          "text": "DPS-2024-001",
+          "confidence": 1.0,
+          "role": "case_number",
+          "context": "unique identifier for the case",
+          "normalized": "DPS-2024-001",
+          "metadata": {
+            "relationships": [],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "EMP-2019-0847",
+          "confidence": 0.95,
+          "role": "employee_id",
+          "context": "internal employee identifier",
+          "metadata": {
+            "relationships": [
+              "assigned_to: Maria Schmidt"
+            ],
+            "section": "PLAINTIFF"
+          }
+        }
+      ],
+      "courts": [
+        {
+          "text": "Labor Court Munich",
+          "confidence": 1.0,
+          "role": "court",
+          "context": "court where the case is filed",
+          "normalized": "Labor Court Munich",
+          "metadata": {
+            "relationships": [
+              "handles_case: DPS-2024-001"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Honorable Court",
+          "confidence": 0.95,
+          "role": "adjudicator",
+          "context": "court to which relief is requested",
+          "metadata": {
+            "relationships": [
+              "relief_requested_by: Plaintiff"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        }
+      ],
+      "addresses": [
+        {
+          "text": "Maximilianstra\u00dfe 45, 80538 Munich, Germany",
+          "confidence": 1.0,
+          "role": "plaintiff_address",
+          "context": "home address of plaintiff",
+          "metadata": {
+            "relationships": [
+              "address_of: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Leopoldstra\u00dfe 123, 80802 Munich, Germany",
+          "confidence": 1.0,
+          "role": "defendant_address",
+          "context": "address of defendant company",
+          "metadata": {
+            "relationships": [
+              "address_of: TechCorp GmbH"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "Sendlinger Stra\u00dfe 89, 80331 Munich",
+          "confidence": 1.0,
+          "role": "law_firm_address",
+          "context": "address of plaintiff's law firm",
+          "metadata": {
+            "relationships": [
+              "address_of: Hoffmann & Associates"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        }
+      ],
+      "positions": [
+        {
+          "text": "Senior Software Developer",
+          "confidence": 1.0,
+          "role": "employee_position",
+          "context": "job title of plaintiff",
+          "metadata": {
+            "relationships": [
+              "position_of: Maria Schmidt"
+            ],
+            "section": "DISMISSAL PROTECTION SUIT"
+          }
+        },
+        {
+          "text": "HR Director",
+          "confidence": 1.0,
+          "role": "position",
+          "context": "job title of Sarah Weber at TechCorp GmbH",
+          "metadata": {
+            "relationships": [
+              "held_by: Sarah Weber",
+              "at: TechCorp GmbH"
+            ],
+            "section": "DEFENDANT"
+          }
+        },
+        {
+          "text": "three new developers",
+          "confidence": 0.9,
+          "role": "new_hires",
+          "context": "new employees hired by Defendant in same department",
+          "normalized": "Software Developer",
+          "metadata": {
+            "relationships": [
+              "hired_by: Defendant",
+              "in_same_department_as: Plaintiff"
+            ],
+            "section": "STATEMENT OF CLAIM"
+          }
+        },
+        {
+          "text": "HR Manager",
+          "confidence": 0.9,
+          "role": "management",
+          "context": "responsible for human resources decisions",
+          "metadata": {
+            "relationships": [
+              "held_by: Thomas Fischer"
+            ],
+            "section": "SUPPORTING EVIDENCE"
+          }
+        }
+      ]
+    },
+    "relationships": {
+      "employment_relationships": [
+        {
+          "employee": "Maria Schmidt",
+          "employer": "TechCorp GmbH",
+          "position": "Senior Software Developer",
+          "duration": {
+            "start": "2019-06-01",
+            "end": "2024-02-28"
+          }
+        },
+        {
+          "employee": "three new developers",
+          "employer": "TechCorp GmbH",
+          "position": "Developer",
+          "duration": {
+            "start": "2024-02-01",
+            "end": null
+          }
+        }
+      ],
+      "legal_relationships": [
+        {
+          "attorney": "Dr. Elisabeth Hoffmann",
+          "client": "Maria Schmidt",
+          "law_firm": "Hoffmann & Associates",
+          "contact": {
+            "email": "e.hoffmann@law-firm.de",
+            "phone": "+49 89 123 4567",
+            "address": "Sendlinger Stra\u00dfe 89, 80331 Munich"
+          }
+        },
+        {
+          "attorney": "Dr. Hans Mueller",
+          "client": "TechCorp GmbH"
+        },
+        {
+          "employee_representative": "works council",
+          "represented": "employees of TechCorp GmbH"
+        },
+        {
+          "witness": "Thomas Fischer",
+          "context": "former HR manager, aware of hiring decisions"
+        },
+        {
+          "witness": "Klaus Weber",
+          "context": "former team lead, can testify to plaintiff's performance"
+        },
+        {
+          "witness": "Anna M\u00fcller",
+          "context": "works council representative"
+        }
+      ],
+      "temporal_sequence": [
+        {
+          "event": "Employment contract signed",
+          "date": "2019-05-20",
+          "entities_involved": [
+            "Maria Schmidt",
+            "TechCorp GmbH"
+          ]
+        },
+        {
+          "event": "Employment commenced",
+          "date": "2019-06-01",
+          "entities_involved": [
+            "Maria Schmidt",
+            "TechCorp GmbH"
+          ]
+        },
+        {
+          "event": "Dismissal notice issued",
+          "date": "2024-02-01",
+          "entities_involved": [
+            "TechCorp GmbH",
+            "Maria Schmidt"
+          ]
+        },
+        {
+          "event": "Dismissal effective",
+          "date": "2024-02-28",
+          "entities_involved": [
+            "Maria Schmidt",
+            "TechCorp GmbH"
+          ]
+        },
+        {
+          "event": "Salary continuation sought from",
+          "date": "2024-03-01",
+          "entities_involved": [
+            "Maria Schmidt",
+            "TechCorp GmbH"
+          ]
+        },
+        {
+          "event": "Case filed at Labor Court Munich",
+          "date": "2024-03-15",
+          "entities_involved": [
+            "Maria Schmidt",
+            "Labor Court Munich",
+            "TechCorp GmbH"
+          ]
+        }
+      ],
+      "causal_chain": [
+        {
+          "cause": "Dismissal notice issued by TechCorp GmbH to Maria Schmidt on 2024-02-01",
+          "effect": "Termination of employment effective 2024-02-28"
+        },
+        {
+          "cause": "Termination of employment",
+          "effect": "Maria Schmidt files dismissal protection suit"
+        },
+        {
+          "cause": "Alleged breach of Dismissal Protection Act (KSchG) and improper social selection (\u00a7 1 Abs. 3 KSchG)",
+          "effect": "Claim for reinstatement, salary continuation, and severance"
+        },
+        {
+          "cause": "Hiring of three new developers in same department",
+          "effect": "Plaintiff alleges operational necessity for dismissal is unsubstantiated"
+        }
+      ],
+      "financial_relationships": [
+        {
+          "payer": "TechCorp GmbH",
+          "payee": "Maria Schmidt",
+          "amount": "\u20ac6,500",
+          "type": "monthly_salary",
+          "period": "until legal resolution or reinstatement"
+        },
+        {
+          "payer": "TechCorp GmbH",
+          "payee": "Maria Schmidt",
+          "amount": "\u20ac39,000",
+          "type": "severance compensation",
+          "basis": "6 months' salary"
+        },
+        {
+          "payer": "TechCorp GmbH",
+          "payee": "Maria Schmidt / Hoffmann & Associates",
+          "amount": "attorney's fees",
+          "type": "legal_costs"
+        },
+        {
+          "payer": "TechCorp GmbH",
+          "payee": "Labor Court Munich",
+          "amount": "court costs",
+          "type": "legal_costs"
+        }
+      ],
+      "procedural_relationships": [
+        {
+          "plaintiff": "Maria Schmidt",
+          "defendant": "TechCorp GmbH",
+          "court": "Labor Court Munich",
+          "case_number": "DPS-2024-001",
+          "date_filed": "2024-03-15"
+        }
+      ]
+    },
+    "insights": {
+      "completeness_assessment": {
+        "score": 0.9,
+        "missing_elements": [
+          "Detailed calculation of damages or compensation sought",
+          "Explicit reference to any prior attempts at settlement or mediation",
+          "Comprehensive list of all supporting documents (some evidence may be referenced but not fully itemized)",
+          "Statement regarding compliance with statutory deadlines for filing"
+        ],
+        "well_covered_areas": [
+          "Identification of parties",
+          "Factual background of the employment relationship and termination",
+          "Legal grounds for the claim",
+          "Relief sought",
+          "Legal representation details"
+        ]
+      },
+      "consistency_check": {
+        "issues_found": [
+          "Minor ambiguity in the timeline of events leading to termination",
+          "Potential overlap or contradiction between factual and legal grounds (e.g., unclear if the legal basis is redundancy or misconduct)"
+        ],
+        "confidence": 0.85
+      },
+      "risk_assessment": {
+        "high_risk_areas": [
+          "Insufficient detail on the calculation of damages or specific remedies, which may weaken the claim's enforceability",
+          "Lack of explicit evidence supporting key factual assertions (e.g., documentation of performance or warnings)"
+        ],
+        "medium_risk_areas": [
+          "Ambiguity in the legal grounds for dismissal protection (could be challenged by the opposing party)",
+          "Absence of a clear statement on compliance with procedural deadlines"
+        ],
+        "low_risk_areas": [
+          "Identification of parties",
+          "General structure and format of the suit",
+          "Inclusion of legal representation"
+        ]
+      },
+      "strengths": [
+        "Comprehensive outline of the factual and legal basis for the claim",
+        "Clear identification of parties and their roles",
+        "Well-structured relief sought section",
+        "Inclusion of legal representation, which supports procedural validity"
+      ],
+      "recommendations": [
+        {
+          "area": "Supporting evidence",
+          "suggestion": "Provide a detailed, itemized list of all supporting documents and evidence referenced in the claim.",
+          "priority": "high"
+        },
+        {
+          "area": "Damages/compensation",
+          "suggestion": "Include a clear calculation and justification for any monetary relief or compensation sought.",
+          "priority": "high"
+        },
+        {
+          "area": "Timeline and deadlines",
+          "suggestion": "Add a statement confirming compliance with all statutory deadlines for filing the suit.",
+          "priority": "medium"
+        },
+        {
+          "area": "Legal grounds",
+          "suggestion": "Clarify the specific legal basis for the dismissal protection claim to avoid ambiguity.",
+          "priority": "medium"
+        },
+        {
+          "area": "Settlement attempts",
+          "suggestion": "Reference any prior attempts at settlement or mediation, if applicable.",
+          "priority": "low"
+        }
+      ],
+      "unusual_patterns": [
+        "Relatively high number of key entities (50) for a standard dismissal protection suit, which may indicate complex factual background or multiple parties/witnesses.",
+        "Six legal relationships identified, which is above average and may suggest the inclusion of ancillary claims or counterclaims."
+      ]
+    },
+    "parser_metadata": {
+      "parsing_time": "2025-07-16T22:14:05.890269",
+      "parser_version": "2.0-LLM",
+      "llm_model": "claude-opus-4-20250514",
+      "confidence_scores": {
+        "type_identification": 0.98,
+        "structure_clarity": 0.95,
+        "content_quality": 0.92
+      },
+      "extraction_method": "llm_deep_parsing"
+    }
+  },
+  "raw": "# DISMISSAL PROTECTION SUIT\n\n**Case No.:** DPS-2024-001\n**Court:** Labor Court Munich\n**Date Filed:** March 15, 2024\n\n---\n\n## PLAINTIFF\n**Name:** Maria Schmidt\n**Address:** Maximilianstra\u00dfe 45, 80538 Munich, Germany\n**Employee ID:** EMP-2019-0847\n**Position:** Senior Software Developer\n**Department:** Engineering\n**Hire Date:** June 1, 2019\n\n## DEFENDANT\n**Company:** TechCorp GmbH\n**Address:** Leopoldstra\u00dfe 123, 80802 Munich, Germany\n**Legal Representative:** Dr. Hans Mueller, Attorney\n**HR Contact:** Sarah Weber, HR Director\n\n---\n\n## STATEMENT OF CLAIM\n\n### I. FACTUAL BACKGROUND\n\n1. **Employment Relationship**\n   - The Plaintiff was employed by Defendant as a Senior Software Developer from June 1, 2019, until the contested dismissal on February 28, 2024.\n   - The employment was governed by a written contract dated May 20, 2019.\n   - Plaintiff's monthly gross salary was \u20ac6,500.\n\n2. **Dismissal Notice**\n   - On February 1, 2024, Defendant issued a written dismissal notice with a termination date of February 28, 2024.\n   - The dismissal was stated to be for \"operational reasons due to restructuring.\"\n   - No prior warning or consultation was provided to the Plaintiff.\n\n3. **Circumstances Leading to Dismissal**\n   - Defendant claims financial difficulties necessitating workforce reduction.\n   - However, Defendant simultaneously hired three new developers in the same department.\n   - Plaintiff's performance evaluations were consistently rated \"excellent\" or \"outstanding.\"\n\n### II. LEGAL GROUNDS\n\n1. **Violation of Dismissal Protection Act (KSchG)**\n   - The dismissal lacks the required urgent operational necessity under \u00a7 1 KSchG.\n   - Defendant failed to consider social selection criteria under \u00a7 1 Abs. 3 KSchG.\n   - No proper consultation with the works council was conducted.\n\n2. **Procedural Violations**\n   - Insufficient notice period provided (should be 4 months per \u00a7 622 BGB).\n   - Failure to offer alternative positions within the company.\n   - Discriminatory selection process favoring younger employees.\n\n### III. RELIEF SOUGHT\n\nThe Plaintiff respectfully requests that this Honorable Court:\n\n1. **Primary Relief:**\n   - Declare the dismissal of February 28, 2024, null and void.\n   - Order reinstatement of Plaintiff to her former position.\n   - Award continued salary payments from March 1, 2024, until reinstatement.\n\n2. **Alternative Relief:**\n   - If reinstatement is not feasible, award severance compensation of \u20ac39,000 (6 months' salary).\n   - Award damages for lost wages and benefits.\n\n3. **Additional Relief:**\n   - Award attorney's fees and court costs.\n   - Grant such other relief as the Court deems just and proper.\n\n---\n\n## SUPPORTING EVIDENCE\n\n### Documents Attached:\n- A. Employment Contract dated May 20, 2019\n- B. Dismissal Notice dated February 1, 2024\n- C. Performance Evaluations 2019-2023\n- D. Company Organizational Chart showing new hires\n- E. Works Council Meeting Minutes\n- F. Salary Statements and Benefits Documentation\n\n### Witness List:\n1. **Klaus Weber** - Former Team Lead, can testify to Plaintiff's performance\n2. **Anna M\u00fcller** - Works Council Representative\n3. **Thomas Fischer** - HR Manager (former), aware of hiring decisions\n\n---\n\n## CONCLUSION\n\nThe dismissal of Maria Schmidt was unlawful and violated both substantive and procedural requirements of German employment law. The Defendant's actions constitute a clear breach of the Dismissal Protection Act, and Plaintiff is entitled to reinstatement and compensation as requested.\n\nRespectfully submitted,\n\n**Attorney for Plaintiff**\nDr. Elisabeth Hoffmann\nRechtsanw\u00e4ltin\nHoffmann & Associates\nSendlinger Stra\u00dfe 89, 80331 Munich\nTel: +49 89 123 4567\nEmail: e.hoffmann@law-firm.de\n\n---\n\n**Date:** March 15, 2024\n**Signature:** [Dr. Elisabeth Hoffmann]\n"
+}

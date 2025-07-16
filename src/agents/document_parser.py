@@ -289,8 +289,8 @@ class DocumentParser:
 
         Document type: {doc_analysis['document_type']}
 
-        Document header (first 1000 chars):
-        {markdown_text[:1000]}
+        Document header:
+        {markdown_text}
 
         Extract:
         1. Case information (number, court, filing date)

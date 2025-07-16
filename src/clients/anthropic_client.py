@@ -35,7 +35,20 @@ class AnthropicClient:
                 model=self.model,
                 max_tokens=self.max_tokens,
                 temperature=temperature,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[
+                    {
+                        "role": "system",
+                        "content": """You are an AI assistant that is an expert in legal documents and legal analysis. You must always respond in JSON loadable format.
+                                Return your findings as **valid, raw JSON** using this schema:
+                                    - Do **not** include any escaped characters (`\\`)
+                                    - Use plain double quotes where needed
+                                    - Ensure all keys and values are properly quoted
+                                    - No Python-style booleans or enums (use `true`/`false`)
+                                    - `null` instead of `None`
+                            """,
+                    },
+                    {"role": "user", "content": prompt},
+                ],
             )
             return response.content[0].text
         except Exception as e:

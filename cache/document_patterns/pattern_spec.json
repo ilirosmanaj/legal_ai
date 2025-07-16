@@ -1,0 +1,357 @@
+{
+  "pattern_id": "legal_doc_pattern_v1",
+  "metadata": {
+    "document_type": "dismissal_protection_suit",
+    "sample_size": 5,
+    "confidence": 0.97,
+    "generation_date": "2024-06-10",
+    "key_insights": [
+      "All documents follow a highly consistent, hierarchical structure with strict section ordering.",
+      "Section headers use markdown-style hashes (#, ##, ###) and ALL CAPS for main sections.",
+      "Critical fields (e.g., names, dates, legal references) are always present and labeled in a fixed way.",
+      "The only notable variation is in the naming/presence of the attorney signature section.",
+      "Legal language is formal, with frequent references to German statutes and standard legal phrasing."
+    ]
+  },
+  "document_template": {
+    "structure": {
+      "strict_order": true,
+      "section_markers": "# for case title, ## for main sections, ### for subsections",
+      "typical_sequence": [
+        "DISMISSAL PROTECTION SUIT",
+        "PLAINTIFF",
+        "DEFENDANT",
+        "STATEMENT OF CLAIM",
+        "SUPPORTING EVIDENCE",
+        "CONCLUSION",
+        "Attorney for Plaintiff / Signature"
+      ],
+      "section_hierarchy": {
+        "main_sections": [
+          "DISMISSAL PROTECTION SUIT",
+          "PLAINTIFF",
+          "DEFENDANT",
+          "STATEMENT OF CLAIM",
+          "SUPPORTING EVIDENCE",
+          "CONCLUSION"
+        ],
+        "subsections": {
+          "STATEMENT OF CLAIM": [
+            "I. FACTUAL BACKGROUND",
+            "II. LEGAL GROUNDS",
+            "III. RELIEF SOUGHT"
+          ],
+          "SUPPORTING EVIDENCE": [
+            "Documents Attached:",
+            "Witness List:",
+            "Expert Witnesses:"
+          ]
+        }
+      }
+    },
+    "required_sections": [
+      "DISMISSAL PROTECTION SUIT",
+      "PLAINTIFF",
+      "DEFENDANT",
+      "STATEMENT OF CLAIM",
+      "SUPPORTING EVIDENCE",
+      "CONCLUSION"
+    ],
+    "optional_sections": [
+      "Attorney for Plaintiff / Signature"
+    ]
+  },
+  "content_patterns": {
+    "by_section": {
+      "DISMISSAL PROTECTION SUIT": {
+        "fields": [
+          "**Case No.:** [CASE_NUMBER]",
+          "**Court:** [COURT_NAME]",
+          "**Date Filed:** [DATE]"
+        ],
+        "format": "Each field on its own line, followed by a horizontal rule (---)."
+      },
+      "PLAINTIFF": {
+        "fields": [
+          "**Name:** [PLAINTIFF_NAME]",
+          "**Address:** [PLAINTIFF_ADDRESS]",
+          "**Employee ID:** [EMPLOYEE_ID]",
+          "**Position:** [POSITION]",
+          "**Department:** [DEPARTMENT]",
+          "**Hire Date:** [HIRE_DATE]"
+        ],
+        "format": "Each field on its own line; factual listing, no narrative."
+      },
+      "DEFENDANT": {
+        "fields": [
+          "**Company:** [COMPANY_NAME]",
+          "**Address:** [COMPANY_ADDRESS]",
+          "**Legal Representative:** [LEGAL_REPRESENTATIVE], [TITLE]",
+          "**HR Contact:** [HR_CONTACT], [HR_POSITION]"
+        ],
+        "format": "Each field on its own line; factual listing."
+      },
+      "STATEMENT OF CLAIM": {
+        "subsections": [
+          "### I. FACTUAL BACKGROUND",
+          "### II. LEGAL GROUNDS",
+          "### III. RELIEF SOUGHT"
+        ],
+        "content": [
+          "Chronological employment details (start date, position, end/dismissal date)",
+          "Reference to employment contract or governing law/statute",
+          "Salary/severance details",
+          "Legal argumentation referencing statutes (e.g., KSchG, AGG)",
+          "Remedy sought (reinstatement, compensation, etc.)"
+        ]
+      },
+      "SUPPORTING EVIDENCE": {
+        "subsections": [
+          "### Documents Attached:",
+          "### Witness List:",
+          "### Expert Witnesses:"
+        ],
+        "content": [
+          "Bulleted list of documentary evidence (A., B., C., etc.)",
+          "Witnesses and their roles",
+          "Expert witnesses and their expertise"
+        ]
+      },
+      "CONCLUSION": {
+        "content": [
+          "Summary statement on unlawfulness of dismissal",
+          "Statement of remedy sought",
+          "Formal closing: 'Respectfully submitted,'",
+          "Attorney for Plaintiff, Date, Signature"
+        ]
+      },
+      "Attorney for Plaintiff / Signature": {
+        "content": [
+          "Attorney's name, signature, and contact information"
+        ],
+        "condition": "Present if document is finalized or formally submitted"
+      }
+    },
+    "fixed_content": {
+      "section_headers": [
+        "# DISMISSAL PROTECTION SUIT",
+        "## PLAINTIFF",
+        "## DEFENDANT",
+        "## STATEMENT OF CLAIM",
+        "## SUPPORTING EVIDENCE",
+        "## CONCLUSION"
+      ],
+      "phrases": [
+        "Respectfully submitted,"
+      ]
+    },
+    "variable_content": {
+      "fields": [
+        "CASE_NUMBER",
+        "COURT_NAME",
+        "DATE",
+        "PLAINTIFF_NAME",
+        "PLAINTIFF_ADDRESS",
+        "EMPLOYEE_ID",
+        "POSITION",
+        "DEPARTMENT",
+        "HIRE_DATE",
+        "COMPANY_NAME",
+        "COMPANY_ADDRESS",
+        "LEGAL_REPRESENTATIVE",
+        "TITLE",
+        "HR_CONTACT",
+        "HR_POSITION",
+        "DISMISSAL_DATE",
+        "DISMISSAL_NOTICE_DATE",
+        "REMEDY",
+        "MONETARY_AMOUNT",
+        "LEGAL_REFERENCE"
+      ]
+    }
+  },
+  "variable_system": {
+    "definitions": {
+      "plaintiff_name": {
+        "type": "person",
+        "required": true
+      },
+      "defendant_name": {
+        "type": "organization",
+        "required": true
+      },
+      "attorney_name": {
+        "type": "person",
+        "required": false
+      },
+      "witness_name": {
+        "type": "person",
+        "required": false
+      },
+      "date_hire": {
+        "type": "date",
+        "required": true
+      },
+      "date_dismissal": {
+        "type": "date",
+        "required": true
+      },
+      "date_dismissal_notice": {
+        "type": "date",
+        "required": false
+      },
+      "date_filed": {
+        "type": "date",
+        "required": true
+      },
+      "monetary_amount": {
+        "type": "monetary",
+        "required": false
+      },
+      "legal_reference": {
+        "type": "legal_ref",
+        "required": true
+      },
+      "case_number": {
+        "type": "case_number",
+        "required": true
+      },
+      "court_name": {
+        "type": "court",
+        "required": true
+      },
+      "address": {
+        "type": "address",
+        "required": true
+      },
+      "position": {
+        "type": "position",
+        "required": true
+      }
+    },
+    "extraction_rules": {
+      "date_disambiguation": "Use context and field labels to distinguish between hire date, dismissal date, notice date, and filing date.",
+      "entity_resolution": "Link pronouns and role references to explicitly named entities in the relevant section."
+    },
+    "relationships": [
+      {
+        "type": "employment",
+        "pattern": "[PLAINTIFF] was employed by [DEFENDANT] as [POSITION] from [HIRE_DATE] until [DISMISSAL_DATE]."
+      },
+      {
+        "type": "dismissal",
+        "pattern": "[DEFENDANT] issued a dismissal notice to [PLAINTIFF] on [DISMISSAL_NOTICE_DATE]."
+      },
+      {
+        "type": "legal_action",
+        "pattern": "[PLAINTIFF] filed a claim against [DEFENDANT] on [DATE_FILED]."
+      },
+      {
+        "type": "representation",
+        "pattern": "[ATTORNEY_NAME] represents [PLAINTIFF]."
+      }
+    ]
+  },
+  "style_guide": {
+    "tone": "Highly formal, objective, and precise. Avoid personal pronouns; use 'Plaintiff' and 'Defendant'.",
+    "formatting": {
+      "headers": "ALL CAPS, markdown-style hashes (#, ##, ###)",
+      "emphasis": "**bold** for field labels and key terms",
+      "lists": "numbered and bulleted for evidence and relief sought",
+      "spacing": "single between sections, horizontal rules (---) for major breaks",
+      "date_format": "European (DD.MM.YYYY) or written out (e.g., February 1, 2024)",
+      "monetary_format": "\u20ac symbol before amount (e.g., \u20ac10,000)"
+    },
+    "legal_language": {
+      "standard_phrases": [
+        "contested dismissal",
+        "STATEMENT OF CLAIM",
+        "I. FACTUAL BACKGROUND",
+        "Employment governed by [contract/agreement]"
+      ],
+      "argument_patterns": [
+        "The [ACTION] violates [LAW] because [REASON]",
+        "[Party] was employed as [Position] from [Start Date] until [End Date].",
+        "Reference to [Document/Exhibit] to support [Claim/Fact]"
+      ],
+      "citation_formats": {
+        "german_law": "\u00a7 [NUMBER] [LAW_CODE] (e.g., \u00a7 1 KSchG)",
+        "act_reference": "[Full Act Name] ([Abbreviation])",
+        "document_reference": "[Document Type] dated [Date]"
+      },
+      "transition_phrases": [
+        "Furthermore,",
+        "In addition,",
+        "Moreover,",
+        "Additionally,",
+        "As evidenced by",
+        "Accordingly,"
+      ]
+    }
+  },
+  "conditional_rules": [
+    {
+      "condition": "Document is finalized or formally submitted",
+      "then": "Include 'Attorney for Plaintiff / Signature' section with attorney's name, signature, and contact information."
+    },
+    {
+      "condition": "Performance-based dismissal",
+      "then": "Include performance documentation and references to warnings in evidence and factual background."
+    },
+    {
+      "condition": "Discrimination is alleged",
+      "then": "Include references to protected characteristics, discriminatory acts, and anti-discrimination statutes in legal grounds and factual background."
+    }
+  ],
+  "generation_instructions": {
+    "step_by_step": [
+      "1. Begin with the case title section, including case number, court, and date filed.",
+      "2. List PLAINTIFF details with all required fields.",
+      "3. List DEFENDANT details with all required fields.",
+      "4. Structure STATEMENT OF CLAIM into three subsections: I. FACTUAL BACKGROUND, II. LEGAL GROUNDS, III. RELIEF SOUGHT.",
+      "5. In SUPPORTING EVIDENCE, provide a bulleted list of documents, witnesses, and expert witnesses.",
+      "6. In CONCLUSION, summarize the unlawfulness of the dismissal, state the remedy sought, and close formally.",
+      "7. If finalized, add the Attorney for Plaintiff / Signature section.",
+      "8. Use ALL CAPS and markdown-style headers for sections, bold for field labels, and proper legal citation formats.",
+      "9. Ensure all variable fields are filled with context-appropriate values."
+    ],
+    "quality_checks": [
+      "Verify all required sections and fields are present and correctly labeled.",
+      "Check that section order matches the template.",
+      "Ensure legal references and citations are formatted per German legal standards.",
+      "Confirm that dates and monetary amounts are in the correct format.",
+      "Review for formal tone and absence of personal pronouns.",
+      "If discrimination or performance-based dismissal is alleged, ensure relevant content is included."
+    ],
+    "firm_preferences": {
+      "section_headers": "ALL CAPS, markdown-style hashes",
+      "signature_block": "Attorney for Plaintiff / Signature section is preferred when submitting finalized documents",
+      "legal_citations": "Use German statutory abbreviations and full act names as appropriate",
+      "evidence_listing": "Bulleted, labeled (A., B., C., etc.)"
+    }
+  },
+  "confidence_assessment": {
+    "high_confidence_patterns": [
+      "Strict section order and structure",
+      "Field labeling and formatting in PLAINTIFF and DEFENDANT sections",
+      "Use of markdown-style headers and ALL CAPS",
+      "Presence and structure of STATEMENT OF CLAIM subsections",
+      "Legal citation formats"
+    ],
+    "medium_confidence_patterns": [
+      "Variations in the Attorney for Plaintiff / Signature section",
+      "Optional inclusion of HR Contact in DEFENDANT section",
+      "Variations in evidence and relief sought based on dismissal type"
+    ],
+    "areas_needing_review": [
+      "Firm-specific preferences for signature block and attorney information",
+      "Handling of rare or complex dismissal scenarios (e.g., constructive dismissal, mass layoffs)",
+      "Potential for additional optional sections in larger or more complex cases"
+    ]
+  },
+  "statistics": {
+    "total_patterns_found": 30,
+    "high_confidence_patterns": 13,
+    "coverage": {}
+  }
+}

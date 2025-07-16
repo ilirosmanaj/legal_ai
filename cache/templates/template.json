@@ -1,0 +1,1049 @@
+{
+  "template_id": "template_legal_doc_pattern_v1_1.0",
+  "metadata": {
+    "created_date": "2025-07-16T23:02:57.763702",
+    "version": "1.0",
+    "pattern_id": "legal_doc_pattern_v1",
+    "document_type": "dismissal_protection_suit",
+    "sample_size": 5,
+    "confidence": 0.97
+  },
+  "structure": {
+    "document_type": "dismissal_protection_suit",
+    "version": "1.0",
+    "sections": [
+      {
+        "id": "dismissal_protection_suit",
+        "title": "DISMISSAL PROTECTION SUIT",
+        "template_content": "{\n  \"DISMISSAL_PROTECTION_SUIT\": \"\nSection: Dismissal Protection Suit\n\nThis action is brought by {{plaintiff_name}} against {{defendant_name}} in the matter of alleged unlawful dismissal from the position of {{position}}. The plaintiff was employed by the defendant commencing on {{date_hire}} and was dismissed on {{date_dismissal}}. <<<IF date_dismissal_notice>>>Notice of dismissal was provided on {{date_dismissal_notice}}.<<</IF>>>\n\nThe plaintiff contends that the dismissal was effected in contravention of applicable legal provisions, specifically referencing {{legal_reference}}. The suit was filed on {{date_filed}} before the {{court_name}}, under case number {{case_number}}.\n\nThe plaintiff seeks the following relief:\n1. Reinstatement to the position of {{position}} at {{defendant_name}};\n2. Payment of all lost wages and benefits, amounting to {{monetary_amount}};\n3. Any further relief deemed just and proper by the court.\n\n<<<IF attorney_name>>>The plaintiff is represented by counsel, {{attorney_name}}.<<</IF>>>\n<<<IF witness_name>>>The following witness(es) may be called to testify: {{witness_name}}.<<</IF>>>\n\nAll correspondence regarding this matter shall be directed to {{address}}.\n\n[[[GENERATE: Insert any additional factual background or legal arguments relevant to the dismissal protection claim.]]]\n\"\n}",
+        "variables": [
+          "date_dismissal_notice",
+          "attorney_name",
+          "witness_name"
+        ],
+        "required": true,
+        "order": 1,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      },
+      {
+        "id": "plaintiff",
+        "title": "PLAINTIFF",
+        "template_content": "{\n  \"PLAINTIFF_SECTION_TEMPLATE\": \"**Name:** {{plaintiff_name}}\\n**Address:** {{address}}\\n**Employee ID:** [[[GENERATE: unique employee identifier for plaintiff]]]\\n**Position:** {{position}}\\n**Department:** [[[GENERATE: department or division relevant to plaintiff's position]]]\\n**Hire Date:** {{date_hire}}\\n<<<IF date_dismissal>>>**Dismissal Date:** {{date_dismissal}}<<</IF>>>\"\n}",
+        "variables": [
+          "date_dismissal"
+        ],
+        "required": true,
+        "order": 2,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      },
+      {
+        "id": "defendant",
+        "title": "DEFENDANT",
+        "template_content": "{\n  \"template\": \"**Company:** {{defendant_name}}\\n**Address:** {{address}}\\n**Legal Representative:** {{attorney_name}}\\n<<<IF position>>>**HR Contact:** {{position}}<<</IF>>>\\n\"\n}",
+        "variables": [
+          "position"
+        ],
+        "required": true,
+        "order": 3,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      },
+      {
+        "id": "statement_of_claim",
+        "title": "STATEMENT OF CLAIM",
+        "template_content": "{\n  \"STATEMENT_OF_CLAIM\": \"1. The Plaintiff, {{plaintiff_name}}, brings this claim against the Defendant, {{defendant_name}}.\\n\\n2. The Plaintiff was employed by the Defendant as {{position}} at {{address}} commencing on {{date_hire}}.\\n\\n3. The Plaintiff's employment was terminated on {{date_dismissal}} <<<IF date_dismissal_notice>>>with notice of dismissal provided on {{date_dismissal_notice}}<<</IF>>>.\\n\\n4. The Plaintiff asserts that the dismissal was unlawful and contrary to {{legal_reference}}.\\n\\n5. As a result of the Defendant's actions, the Plaintiff has suffered loss and damage, including but not limited to loss of income and entitlements, in the amount of {{monetary_amount}}.\\n\\n6. The Plaintiff seeks the following relief:\\n   a. Payment of {{monetary_amount}};\\n   b. Any further or other relief as the Court deems appropriate.\\n\\n7. This Statement of Claim is filed on {{date_filed}} in the {{court_name}}, under case number {{case_number}}.\\n\\n[[[GENERATE: Insert any additional facts or particulars relevant to the claim, including references to supporting witnesses such as {{witness_name}}, and any further legal grounds or remedies sought.]]]\"\n}",
+        "variables": [
+          "date_dismissal_notice"
+        ],
+        "required": true,
+        "order": 4,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      },
+      {
+        "id": "supporting_evidence",
+        "title": "SUPPORTING EVIDENCE",
+        "template_content": "{\n  \"SUPPORTING_EVIDENCE\": \"\n    The following evidence is submitted in support of this claim:\n\n    1. Employment Records: Documentation confirming that {{plaintiff_name}} was employed by {{defendant_name}} as {{position}} at {{address}} from {{date_hire}} to {{date_dismissal}}.\n    2. Notice of Dismissal: A copy of the dismissal notice dated {{date_dismissal_notice}}, outlining the reasons for termination.\n    3. Correspondence: Relevant communications between {{plaintiff_name}} and {{defendant_name}} regarding the terms of employment and the circumstances of dismissal.\n    4. Witness Statements: <<<IF witness_name>>>A statement from {{witness_name}} attesting to the events leading up to and following the dismissal.<<</IF>>>\n    5. Financial Records: Documentation supporting the claimed monetary amount of {{monetary_amount}}, including pay stubs, bank statements, and any other relevant financial evidence.\n    6. Legal References: Copies of applicable statutes, regulations, or case law, including {{legal_reference}}, supporting the legal basis for this claim.\n    7. Court Filings: A copy of the complaint filed on {{date_filed}} in {{court_name}}, case number {{case_number}}.\n\n    [[[GENERATE: Add any additional evidence or exhibits relevant to the specific facts and circumstances of the case.]]]\n\n    All evidence referenced above is attached hereto and incorporated by reference.\n  \"\n}",
+        "variables": [
+          "witness_name"
+        ],
+        "required": true,
+        "order": 5,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      },
+      {
+        "id": "conclusion",
+        "title": "CONCLUSION",
+        "template_content": "{\n  \"template\": \"The dismissal of {{plaintiff_name}} was <<<IF legal_reference>>>in violation of {{legal_reference}} and<<</IF>>> contrary to fundamental principles of German employment protection law. The Defendant's actions <<<IF legal_reference>>>constitute a breach of {{legal_reference}} and<<</IF>>> failed to meet both substantive and procedural requirements. <<<IF position>>>Given Plaintiff's role as {{position}} and the circumstances of the dismissal, reinstatement and appropriate compensation are warranted.<<</IF>>> <<<IF monetary_amount>>>Plaintiff seeks compensation in the amount of {{monetary_amount}} for this unlawful termination.<<</IF>>>\\n\\nRespectfully submitted,\\n\\n**Attorney for Plaintiff**\\n{{attorney_name}}\\n{{address}}\\n<<<IF attorney_name>>>Tel: [[[GENERATE: attorney_phone_number]]]<<</IF>>>\\n<<<IF attorney_name>>>Email: [[[GENERATE: attorney_email]]]<<</IF>>>\\n\\n---\\n\\n**Date:** {{date_filed}}\\n**Signature:** [{{attorney_name}}]\"\n}",
+        "variables": [
+          "position",
+          "attorney_name",
+          "legal_reference",
+          "monetary_amount"
+        ],
+        "required": true,
+        "order": 6,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      },
+      {
+        "id": "attorney_for_plaintiff___signature",
+        "title": "Attorney for Plaintiff / Signature",
+        "template_content": "{\n  \"template\": \"ATTORNEY FOR PLAINTIFF / SIGNATURE\\n\\nRespectfully submitted,\\n\\n[[[GENERATE: Insert law firm name, if applicable]]]\\n\\nBy: ________________________________\\n    {{attorney_name}}\\n    Attorney for Plaintiff: {{plaintiff_name}}\\n    Address: {{address}}\\n    <<<IF position>>>Position: {{position}}<<</IF>>>\\n    Date: [[[GENERATE: Insert date of signature]]]\\n\"\n}",
+        "variables": [
+          "position"
+        ],
+        "required": false,
+        "order": 7,
+        "conditions": [],
+        "subsections": [],
+        "generation_instructions": null
+      }
+    ]
+  },
+  "variable_system": {
+    "variables": {
+      "plaintiff_name": {
+        "name": "plaintiff_name",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter plaintiff_name",
+        "ui_hints": {
+          "label": "Plaintiff Name",
+          "placeholder": "Enter plaintiff name",
+          "help_text": "",
+          "input_type": "text",
+          "examples": [
+            "Dr. Elisabeth Hoffmann",
+            "Maria Schmidt",
+            "Plaintiff",
+            "Klaus Weber",
+            "Rechtsanwalt Dr. Frank Zimmermann"
+          ]
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "defendant_name": {
+        "name": "defendant_name",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter defendant_name",
+        "ui_hints": {
+          "label": "Defendant Name",
+          "placeholder": "Enter defendant name",
+          "help_text": "",
+          "input_type": "text",
+          "examples": [
+            "TechCorp GmbH",
+            "Defendant",
+            "works council",
+            "BioTech Innovations AG",
+            "Company"
+          ]
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "attorney_name": {
+        "name": "attorney_name",
+        "type": "text",
+        "required": false,
+        "default": null,
+        "validation": {},
+        "description": "Enter attorney_name",
+        "ui_hints": {
+          "label": "Attorney Name",
+          "placeholder": "Enter attorney name",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "witness_name": {
+        "name": "witness_name",
+        "type": "text",
+        "required": false,
+        "default": null,
+        "validation": {},
+        "description": "Enter witness_name",
+        "ui_hints": {
+          "label": "Witness Name",
+          "placeholder": "Enter witness name",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "date_hire": {
+        "name": "date_hire",
+        "type": "date",
+        "required": true,
+        "default": null,
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "description": "Enter date_hire",
+        "ui_hints": {
+          "label": "Date Hire",
+          "placeholder": "Enter date hire",
+          "help_text": "",
+          "input_type": "date",
+          "date_picker": true,
+          "format_hint": "DD.MM.YYYY",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "date_dismissal": {
+        "name": "date_dismissal",
+        "type": "date",
+        "required": true,
+        "default": null,
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "description": "Enter date_dismissal",
+        "ui_hints": {
+          "label": "Date Dismissal",
+          "placeholder": "Enter date dismissal",
+          "help_text": "",
+          "input_type": "date",
+          "date_picker": true,
+          "format_hint": "DD.MM.YYYY",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "date_dismissal_notice": {
+        "name": "date_dismissal_notice",
+        "type": "date",
+        "required": false,
+        "default": null,
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "description": "Enter date_dismissal_notice",
+        "ui_hints": {
+          "label": "Date Dismissal Notice",
+          "placeholder": "Enter date dismissal notice",
+          "help_text": "",
+          "input_type": "date",
+          "date_picker": true,
+          "format_hint": "DD.MM.YYYY",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "date_filed": {
+        "name": "date_filed",
+        "type": "date",
+        "required": true,
+        "default": null,
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "description": "Enter date_filed",
+        "ui_hints": {
+          "label": "Date Filed",
+          "placeholder": "Enter date filed",
+          "help_text": "",
+          "input_type": "date",
+          "date_picker": true,
+          "format_hint": "DD.MM.YYYY",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "monetary_amount": {
+        "name": "monetary_amount",
+        "type": "money",
+        "required": false,
+        "default": null,
+        "validation": {
+          "min": 0,
+          "currency": "EUR"
+        },
+        "description": "Enter monetary_amount",
+        "ui_hints": {
+          "label": "Monetary Amount",
+          "placeholder": "Enter monetary amount",
+          "help_text": "",
+          "input_type": "text",
+          "currency_symbol": "\u20ac",
+          "decimal_places": 2,
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "legal_reference": {
+        "name": "legal_reference",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter legal_reference",
+        "ui_hints": {
+          "label": "Legal Reference",
+          "placeholder": "Enter legal reference",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "case_number": {
+        "name": "case_number",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter case_number",
+        "ui_hints": {
+          "label": "Case Number",
+          "placeholder": "Enter case number",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "court_name": {
+        "name": "court_name",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter court_name",
+        "ui_hints": {
+          "label": "Court Name",
+          "placeholder": "Enter court name",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "address": {
+        "name": "address",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter address",
+        "ui_hints": {
+          "label": "Address",
+          "placeholder": "Enter address",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      },
+      "position": {
+        "name": "position",
+        "type": "text",
+        "required": true,
+        "default": null,
+        "validation": {},
+        "description": "Enter position",
+        "ui_hints": {
+          "label": "Position",
+          "placeholder": "Enter position",
+          "help_text": "",
+          "input_type": "text",
+          "examples": []
+        },
+        "extraction_hints": {},
+        "dependencies": []
+      }
+    },
+    "relationships": [
+      {
+        "type": "employment",
+        "pattern": "[PLAINTIFF] was employed by [DEFENDANT] as [POSITION] from [HIRE_DATE] until [DISMISSAL_DATE]."
+      },
+      {
+        "type": "dismissal",
+        "pattern": "[DEFENDANT] issued a dismissal notice to [PLAINTIFF] on [DISMISSAL_NOTICE_DATE]."
+      },
+      {
+        "type": "legal_action",
+        "pattern": "[PLAINTIFF] filed a claim against [DEFENDANT] on [DATE_FILED]."
+      },
+      {
+        "type": "representation",
+        "pattern": "[ATTORNEY_NAME] represents [PLAINTIFF]."
+      }
+    ],
+    "input_order": [
+      "plaintiff_name",
+      "defendant_name",
+      "attorney_name",
+      "witness_name",
+      "date_hire",
+      "date_dismissal",
+      "date_dismissal_notice",
+      "date_filed",
+      "monetary_amount",
+      "legal_reference",
+      "case_number",
+      "court_name",
+      "address",
+      "position"
+    ],
+    "validation_order": [
+      "plaintiff_name",
+      "defendant_name",
+      "attorney_name",
+      "witness_name",
+      "date_hire",
+      "date_dismissal",
+      "date_dismissal_notice",
+      "date_filed",
+      "monetary_amount",
+      "legal_reference",
+      "case_number",
+      "court_name",
+      "address",
+      "position"
+    ]
+  },
+  "conditional_logic": {
+    "rules": [
+      {
+        "id": "rule_0",
+        "condition_id": "condition_0",
+        "action_id": "action_0",
+        "priority": 100
+      },
+      {
+        "id": "rule_1",
+        "condition_id": "condition_1",
+        "action_id": "action_1",
+        "priority": 100
+      },
+      {
+        "id": "rule_2",
+        "condition_id": "condition_2",
+        "action_id": "action_2",
+        "priority": 100
+      }
+    ],
+    "conditions": {
+      "condition_0": {
+        "id": "condition_0",
+        "type": "custom",
+        "expression": "Document is finalized or formally submitted",
+        "evaluation": {
+          "type": "expression",
+          "expression": "Document is finalized or formally submitted",
+          "variables": []
+        }
+      },
+      "condition_1": {
+        "id": "condition_1",
+        "type": "custom",
+        "expression": "Performance-based dismissal",
+        "evaluation": {
+          "type": "expression",
+          "expression": "Performance-based dismissal",
+          "variables": []
+        }
+      },
+      "condition_2": {
+        "id": "condition_2",
+        "type": "custom",
+        "expression": "Discrimination is alleged",
+        "evaluation": {
+          "type": "expression",
+          "expression": "Discrimination is alleged",
+          "variables": []
+        }
+      }
+    },
+    "actions": {
+      "action_0": {
+        "id": "action_0",
+        "type": "include_section",
+        "target": null,
+        "parameters": {}
+      },
+      "action_1": {
+        "id": "action_1",
+        "type": "include_section",
+        "target": null,
+        "parameters": {}
+      },
+      "action_2": {
+        "id": "action_2",
+        "type": "include_section",
+        "target": null,
+        "parameters": {}
+      }
+    },
+    "evaluation_order": [
+      {
+        "id": "rule_0",
+        "condition_id": "condition_0",
+        "action_id": "action_0",
+        "priority": 100
+      },
+      {
+        "id": "rule_1",
+        "condition_id": "condition_1",
+        "action_id": "action_1",
+        "priority": 100
+      },
+      {
+        "id": "rule_2",
+        "condition_id": "condition_2",
+        "action_id": "action_2",
+        "priority": 100
+      }
+    ]
+  },
+  "generation_instructions": {
+    "generation_flow": [
+      {
+        "step_id": "gen_dismissal_protection_suit",
+        "section_id": "dismissal_protection_suit",
+        "section_title": "DISMISSAL PROTECTION SUIT",
+        "required": true,
+        "order": 1,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      },
+      {
+        "step_id": "gen_plaintiff",
+        "section_id": "plaintiff",
+        "section_title": "PLAINTIFF",
+        "required": true,
+        "order": 2,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      },
+      {
+        "step_id": "gen_defendant",
+        "section_id": "defendant",
+        "section_title": "DEFENDANT",
+        "required": true,
+        "order": 3,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      },
+      {
+        "step_id": "gen_statement_of_claim",
+        "section_id": "statement_of_claim",
+        "section_title": "STATEMENT OF CLAIM",
+        "required": true,
+        "order": 4,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      },
+      {
+        "step_id": "gen_supporting_evidence",
+        "section_id": "supporting_evidence",
+        "section_title": "SUPPORTING EVIDENCE",
+        "required": true,
+        "order": 5,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      },
+      {
+        "step_id": "gen_conclusion",
+        "section_id": "conclusion",
+        "section_title": "CONCLUSION",
+        "required": true,
+        "order": 6,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      },
+      {
+        "step_id": "gen_attorney_for_plaintiff___signature",
+        "section_id": "attorney_for_plaintiff___signature",
+        "section_title": "Attorney for Plaintiff / Signature",
+        "required": false,
+        "order": 7,
+        "instructions": {
+          "approach": "llm_generated",
+          "required_elements": [],
+          "style_notes": {},
+          "variable_handling": {
+            "missing_optional": "skip_placeholder",
+            "missing_required": "error"
+          },
+          "quality_checks": [
+            "verify_legal_language",
+            "check_variable_consistency",
+            "validate_formatting"
+          ]
+        }
+      }
+    ],
+    "section_instructions": {},
+    "variable_handling": {
+      "missing_required": "raise_error",
+      "missing_optional": "skip_or_use_default",
+      "invalid_format": "attempt_correction_then_error",
+      "type_conversion": {
+        "date": {
+          "input_formats": [
+            "DD.MM.YYYY",
+            "YYYY-MM-DD",
+            "Month DD, YYYY"
+          ],
+          "output_format": "DD.MM.YYYY",
+          "conversion": "flexible_date_parser"
+        },
+        "money": {
+          "input_formats": [
+            "1234.56",
+            "1,234.56",
+            "1.234,56"
+          ],
+          "output_format": "\u20acX,XXX.XX",
+          "conversion": "currency_formatter"
+        },
+        "text": {
+          "capitalization": "preserve",
+          "trimming": "trim_whitespace"
+        }
+      }
+    },
+    "style_requirements": {
+      "tone": "Highly formal, objective, and precise. Avoid personal pronouns; use 'Plaintiff' and 'Defendant'.",
+      "voice": {
+        "primary": "active"
+      },
+      "formatting": {},
+      "legal_language": {
+        "standard_phrases": [
+          "contested dismissal",
+          "STATEMENT OF CLAIM",
+          "I. FACTUAL BACKGROUND",
+          "Employment governed by [contract/agreement]"
+        ],
+        "argument_patterns": [
+          "The [ACTION] violates [LAW] because [REASON]",
+          "[Party] was employed as [Position] from [Start Date] until [End Date].",
+          "Reference to [Document/Exhibit] to support [Claim/Fact]"
+        ],
+        "citation_formats": {
+          "german_law": "\u00a7 [NUMBER] [LAW_CODE] (e.g., \u00a7 1 KSchG)",
+          "act_reference": "[Full Act Name] ([Abbreviation])",
+          "document_reference": "[Document Type] dated [Date]"
+        },
+        "transition_phrases": [
+          "Furthermore,",
+          "In addition,",
+          "Moreover,",
+          "Additionally,",
+          "As evidenced by",
+          "Accordingly,"
+        ]
+      }
+    },
+    "quality_checks": [
+      {
+        "check": "required_sections_present",
+        "severity": "error"
+      },
+      {
+        "check": "legal_references_valid",
+        "severity": "error"
+      },
+      {
+        "check": "variable_consistency",
+        "severity": "warning"
+      },
+      {
+        "check": "style_compliance",
+        "severity": "warning"
+      }
+    ]
+  },
+  "style_guide": {
+    "general": {
+      "formality_level": "formal",
+      "tone": "objective",
+      "voice": {}
+    },
+    "formatting": {
+      "date_format": "Month DD, YYYY",
+      "number_format": "European",
+      "currency_format": "\u20ac symbol before amount (e.g., \u20ac10,000)",
+      "section_headers": "ALL CAPS",
+      "emphasis": "**bold**"
+    },
+    "language": {
+      "standard_phrases": {},
+      "transition_words": [],
+      "legal_citations": {},
+      "avoid_phrases": []
+    },
+    "structure": {
+      "paragraph_length": "medium",
+      "sentence_complexity": "complex",
+      "list_style": "numbered"
+    }
+  },
+  "validation_rules": {
+    "variable_validation": {
+      "plaintiff_name": {},
+      "defendant_name": {},
+      "attorney_name": {},
+      "witness_name": {},
+      "date_hire": {
+        "format": "YYYY-MM-DD"
+      },
+      "date_dismissal": {
+        "format": "YYYY-MM-DD"
+      },
+      "date_dismissal_notice": {
+        "format": "YYYY-MM-DD"
+      },
+      "date_filed": {
+        "format": "YYYY-MM-DD"
+      },
+      "monetary_amount": {
+        "min": 0,
+        "currency": "EUR"
+      },
+      "legal_reference": {},
+      "case_number": {},
+      "court_name": {},
+      "address": {},
+      "position": {}
+    },
+    "structural_validation": [
+      {
+        "rule": "all_required_sections_present",
+        "sections": [
+          "DISMISSAL PROTECTION SUIT",
+          "PLAINTIFF",
+          "DEFENDANT",
+          "STATEMENT OF CLAIM",
+          "SUPPORTING EVIDENCE",
+          "CONCLUSION"
+        ],
+        "severity": "error"
+      },
+      {
+        "rule": "section_order_maintained",
+        "expected_order": [
+          "DISMISSAL PROTECTION SUIT",
+          "PLAINTIFF",
+          "DEFENDANT",
+          "STATEMENT OF CLAIM",
+          "SUPPORTING EVIDENCE",
+          "CONCLUSION",
+          "Attorney for Plaintiff / Signature"
+        ],
+        "severity": "warning"
+      }
+    ],
+    "content_validation": [],
+    "relationship_validation": [],
+    "legal_validation": [
+      {
+        "rule": "valid_legal_references",
+        "pattern": {},
+        "severity": "error"
+      },
+      {
+        "rule": "required_legal_elements",
+        "elements": [],
+        "severity": "error"
+      }
+    ]
+  },
+  "user_interface": {
+    "input_fields": [
+      {
+        "name": "plaintiff_name",
+        "type": "text",
+        "label": "Plaintiff Name",
+        "placeholder": "Enter plaintiff name",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "defendant_name",
+        "type": "text",
+        "label": "Defendant Name",
+        "placeholder": "Enter defendant name",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "attorney_name",
+        "type": "text",
+        "label": "Attorney Name",
+        "placeholder": "Enter attorney name",
+        "required": false,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "witness_name",
+        "type": "text",
+        "label": "Witness Name",
+        "placeholder": "Enter witness name",
+        "required": false,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "date_hire",
+        "type": "date",
+        "label": "Date Hire",
+        "placeholder": "Enter date hire",
+        "required": true,
+        "help_text": "",
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "date_picker": true
+      },
+      {
+        "name": "date_dismissal",
+        "type": "date",
+        "label": "Date Dismissal",
+        "placeholder": "Enter date dismissal",
+        "required": true,
+        "help_text": "",
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "date_picker": true
+      },
+      {
+        "name": "date_dismissal_notice",
+        "type": "date",
+        "label": "Date Dismissal Notice",
+        "placeholder": "Enter date dismissal notice",
+        "required": false,
+        "help_text": "",
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "date_picker": true
+      },
+      {
+        "name": "date_filed",
+        "type": "date",
+        "label": "Date Filed",
+        "placeholder": "Enter date filed",
+        "required": true,
+        "help_text": "",
+        "validation": {
+          "format": "YYYY-MM-DD"
+        },
+        "date_picker": true
+      },
+      {
+        "name": "monetary_amount",
+        "type": "money",
+        "label": "Monetary Amount",
+        "placeholder": "Enter monetary amount",
+        "required": false,
+        "help_text": "",
+        "validation": {
+          "min": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "name": "legal_reference",
+        "type": "text",
+        "label": "Legal Reference",
+        "placeholder": "Enter legal reference",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "case_number",
+        "type": "text",
+        "label": "Case Number",
+        "placeholder": "Enter case number",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "court_name",
+        "type": "text",
+        "label": "Court Name",
+        "placeholder": "Enter court name",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "address",
+        "type": "text",
+        "label": "Address",
+        "placeholder": "Enter address",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      },
+      {
+        "name": "position",
+        "type": "text",
+        "label": "Position",
+        "placeholder": "Enter position",
+        "required": true,
+        "help_text": "",
+        "validation": {}
+      }
+    ],
+    "conditional_fields": [
+      {
+        "condition_id": "condition_0",
+        "type": "custom",
+        "expression": "Document is finalized or formally submitted",
+        "affects": []
+      },
+      {
+        "condition_id": "condition_1",
+        "type": "custom",
+        "expression": "Performance-based dismissal",
+        "affects": []
+      },
+      {
+        "condition_id": "condition_2",
+        "type": "custom",
+        "expression": "Discrimination is alleged",
+        "affects": []
+      }
+    ],
+    "sections_toggle": [
+      {
+        "section_id": "attorney_for_plaintiff___signature",
+        "section_title": "Attorney for Plaintiff / Signature",
+        "default_state": "hidden",
+        "conditions": []
+      }
+    ],
+    "preview_available": true
+  },
+  "generation_config": {
+    "method": "template_fill_and_generate",
+    "llm_required": true,
+    "post_processing": [
+      "format_dates",
+      "format_currency",
+      "validate_legal_references",
+      "ensure_consistency"
+    ]
+  },
+  "methods": {
+    "generate": "generate_document",
+    "validate": "validate_inputs",
+    "preview": "preview_document",
+    "export": "export_formats"
+  }
+}
