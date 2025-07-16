@@ -1,0 +1,7 @@
+# Development dependencies
+pre-commit>=3.5.0
+ruff>=0.1.6
+
+# Project dependencies
+anthropic>=0.25.0
+python-dotenv>=1.0.0
