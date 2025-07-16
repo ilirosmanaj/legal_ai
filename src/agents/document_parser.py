@@ -1,4 +1,3 @@
-import hashlib
 import json
 import logging
 import os
@@ -460,11 +459,6 @@ class DocumentParser:
 
         resolved_entities = entities.copy()
         return self._deduplicate_entities(resolved_entities)
-
-    def _generate_doc_id(self, content: str) -> str:
-        """Generate unique document ID"""
-        content_hash = hashlib.md5(content.encode()).hexdigest()[:8]
-        return f"doc_{content_hash}"
 
     def _build_section_tree(self, section_data: Dict, full_text: str) -> Section:
         """Build Section tree from LLM response"""
