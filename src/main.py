@@ -157,7 +157,7 @@ def main():
     document = document_generator.generate_document(template, variables)
     logger.info(f"Document: {document}")
 
-    with open("cache/generated_documents/generated_document.md", "w") as f:
+    with open("cache/generated_documents/generated_document_001.md", "w") as f:
         f.write(document)
 
 

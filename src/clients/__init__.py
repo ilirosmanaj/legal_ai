@@ -23,8 +23,8 @@ class LLMClient:
     def complete(self, prompt: str, temperature: float = 0) -> str:
         return self.client.complete(prompt, temperature)
 
-    def complete_with_system_prompt(self, prompt: str, temperature: float = 0) -> str:
-        return self.client.complete_with_system_prompt(prompt, temperature)
+    def complete_with_system_prompt(self, system_prompt: str, user_prompt: str, temperature: float = 0) -> str:
+        return self.client.complete_with_system_prompt(system_prompt, user_prompt, temperature)
 
     def complete_with_messages(self, prompt: str, temperature: float = 0) -> str:
         return self.client.complete_with_messages(prompt, temperature)

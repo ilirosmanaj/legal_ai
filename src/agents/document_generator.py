@@ -381,7 +381,30 @@ class DocumentGenerator:
             if subsection_content:
                 content_parts.append(subsection_content)
 
-        return "\n\n".join(filter(None, content_parts))
+        def _clean_content(content: str) -> str:
+            if content.startswith("{"):
+                content = content[content.find(":") + 1 : -1]
+            return (
+                content.replace("```json", "")
+                .replace("```", "")
+                .replace("<", "")
+                .replace(">", "")
+                .replace("{", "")
+                .replace("}", "")
+                .replace("[", "")
+                .replace("]", "")
+                .replace('"', "")
+            )
+
+        section_content = ""
+        for part in content_parts:
+            if part is None:
+                continue
+
+            cleaned_content = _clean_content(part)
+            section_content += f"\n\n{cleaned_content}"
+
+        return section_content
 
     def _format_section_title(self, title: str, style_guide: Dict) -> str:
         """Format section title according to style guide"""
@@ -492,7 +515,10 @@ class DocumentGenerator:
                 Generate only the requested text, no explanations.
                 """
 
-                generated = self.llm.complete(prompt)
+                generated = self.llm.complete_with_system_prompt(
+                    system_prompt="You are an AI assistant that generates legal text based on a given instruction. You are given a context and a request to generate text. You must generate the text based on the context and the request. You must generate the text in the same language as the context.",
+                    user_prompt=prompt,
+                )
                 return generated.strip()
             else:
                 return f"[Generated content for: {instruction}]"
