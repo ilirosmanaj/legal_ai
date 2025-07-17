@@ -36,6 +36,7 @@ class DocumentGenerator:
 
         if template.get("metadata", {}).get("document_type"):
             document_parts.append(self._generate_document_header(template, processed_values))
+
         structure = template.get("structure", {})
         for section in structure.get("sections", []):
             if self._should_include_section(section, active_sections):
@@ -92,21 +93,19 @@ class DocumentGenerator:
     def _apply_validation_rules(self, var_name: str, value: Any, rules: Dict):
         """Apply custom validation rules to a variable"""
 
-        if "min" in rules and isinstance(value, (int, float)):
-            if value < rules["min"]:
-                raise ValueError(f"Variable '{var_name}' must be at least {rules['min']}")
+        if "min" in rules and isinstance(value, (int, float)) and value < rules["min"]:
+            raise ValueError(f"Variable '{var_name}' must be at least {rules['min']}")
 
-        if "max" in rules and isinstance(value, (int, float)):
-            if value > rules["max"]:
-                raise ValueError(f"Variable '{var_name}' must be at most {rules['max']}")
+        if "max" in rules and isinstance(value, (int, float)) and value > rules["max"]:
+            raise ValueError(f"Variable '{var_name}' must be at most {rules['max']}")
 
         if "pattern" in rules and isinstance(value, str):
             if not re.match(rules["pattern"], value):
-                raise ValueError(f"Variable '{var_name}' does not match required pattern")
+                raise ValueError(f"Variable '{var_name}' does not match required pattern: {rules['pattern']}")
 
         if "max_length" in rules and isinstance(value, str):
             if len(value) > rules["max_length"]:
-                raise ValueError(f"Variable '{var_name}' exceeds maximum length of {rules['max_length']}")
+                raise ValueError(f"Variable '{var_name}' exceeds maximum length of {rules['max_length']}: {value}")
 
     def _validate_relationships(self, template: Dict, variables: Dict[str, Any]):
         """Validate relationships between variables"""
@@ -158,7 +157,6 @@ class DocumentGenerator:
             if var_name in variables:
                 var_def = variables[var_name]
 
-                # Process based on type
                 if var_def["type"] == "date":
                     processed[var_name] = self._format_date(value, style_guide.get("formatting", {}))
                 elif var_def["type"] == "money":
@@ -168,10 +166,8 @@ class DocumentGenerator:
                 else:
                     processed[var_name] = value
             else:
-                # Pass through unknown variables
                 processed[var_name] = value
 
-        # Add derived variables
         processed.update(self._generate_derived_variables(template, processed))
 
         return processed
@@ -215,7 +211,6 @@ class DocumentGenerator:
     def _format_text(self, value: str, var_def: Dict) -> str:
         """Format text according to variable definition"""
 
-        # Apply any text transformations
         if var_def.get("transform") == "uppercase":
             return value.upper()
         elif var_def.get("transform") == "lowercase":
@@ -336,8 +331,6 @@ class DocumentGenerator:
 
         if section.get("required", True):
             return True
-
-        # Check if section ID is in active sections
         return section["id"] in active_sections
 
     def _generate_document_header(self, template: Dict, variables: Dict[str, Any]) -> str:
@@ -413,13 +406,10 @@ class DocumentGenerator:
 
             for pattern in patterns:
                 if pattern in filled_content:
-                    # Handle JSON values by extracting the actual content
                     if isinstance(value, str) and value.strip().startswith("{") and value.strip().endswith("}"):
                         try:
                             json_value = json.loads(value)
-                            # Extract the actual content from JSON
                             if isinstance(json_value, dict):
-                                # Look for the actual content in the JSON
                                 for key, content in json_value.items():
                                     if isinstance(content, str):
                                         extracted_value = content
@@ -450,13 +440,11 @@ class DocumentGenerator:
             condition = match.group(1)
             conditional_content = match.group(2)
 
-            # Evaluate the condition
             if self._evaluate_template_condition(condition, variables):
                 return conditional_content
             else:
-                return ""  # Remove content if condition not met
+                return ""
 
-        # Process all conditionals
         content = re.sub(conditional_pattern, evaluate_conditional, content, flags=re.DOTALL)
 
         return content
@@ -464,11 +452,9 @@ class DocumentGenerator:
     def _evaluate_template_condition(self, condition: str, variables: Dict[str, Any]) -> bool:
         """Evaluate a condition in template"""
 
-        # Simple existence check
         if condition in variables:
             return bool(variables[condition])
 
-        # Comparison operators
         if "==" in condition:
             parts = condition.split("==")
             if len(parts) == 2:
@@ -476,19 +462,15 @@ class DocumentGenerator:
                 expected = parts[1].strip().strip("\"'")
                 return str(variables.get(var_name, "")) == expected
 
-        # Boolean values
         if condition.lower() == "true":
             return True
         elif condition.lower() == "false":
             return False
 
-        # Default to checking if variable exists and is truthy
         return bool(variables.get(condition))
 
     def _process_generation_instructions(self, content: str, variables: Dict[str, Any], instructions: Dict) -> str:
         """Process generation instructions that require LLM"""
-
-        import re
 
         generation_pattern = r"\[\[GENERATE:\s*([^\]]+)\]\]"
 

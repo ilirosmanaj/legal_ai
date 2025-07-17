@@ -135,35 +135,6 @@ class TemplateBuilder:
         logger.info("Template building completed")
         return executable_template
 
-    def generate_document_from_template(template: Dict, variables: Dict[str, Any]) -> str:
-        """
-        Simple document generation from template and variables.
-
-        Args:
-            template: Executable template from TemplateBuilder
-            variables: Dictionary of variable values
-
-        Returns:
-            Generated document text
-        """
-
-        structure = template.get("structure", {})
-        document_parts = []
-
-        for section in structure.get("sections", []):
-            if section.get("required", True) or should_include_optional(section, variables):
-                content = section.get("template_content", "")
-
-                for var_name, value in variables.items():
-                    content = content.replace(f"{{{{{var_name}}}}}", str(value))
-                    content = content.replace(f"{{{{{var_name.upper()}}}}}", str(value))
-
-                if content.strip():
-                    document_parts.append(f"## {section['title']}")
-                    document_parts.append(content)
-
-        return "\n\n".join(document_parts)
-
     def _analyze_pattern_spec(self, pattern_spec: Dict) -> Dict:
         """Analyze pattern specification to understand requirements"""
 
@@ -562,14 +533,12 @@ class TemplateBuilder:
                 section.template_content = section_templates[section_key]
                 section.variables = self._extract_variables_from_template(section.template_content)
 
-            # Process subsections
             for subsection in section.subsections:
                 subsection_key = f"{section_key}/{subsection.title.upper().replace(' ', '_')}"
                 if subsection_key in section_templates:
                     subsection.template_content = section_templates[subsection_key]
                     subsection.variables = self._extract_variables_from_template(subsection.template_content)
 
-        # Create final executable template
         executable_template = {
             "template_id": f"template_{pattern_spec['pattern_id']}_{self.template_version}",
             "metadata": {
@@ -580,21 +549,18 @@ class TemplateBuilder:
                 "sample_size": pattern_spec["metadata"].get("sample_size", 0),
                 "confidence": pattern_spec["metadata"].get("confidence", 0.0),
             },
-            # Core components
             "structure": self._serialize_structure(template_structure),
             "variable_system": variable_system,
             "conditional_logic": conditional_logic,
             "generation_instructions": generation_instructions,
             "style_guide": style_guide,
             "validation_rules": validation_rules,
-            # User interface
             "user_interface": {
                 "input_fields": self._create_input_fields(variable_system),
                 "conditional_fields": self._create_conditional_fields(conditional_logic),
                 "sections_toggle": self._create_section_toggles(template_structure),
                 "preview_available": True,
             },
-            # Generation configuration
             "generation_config": {
                 "method": "template_fill_and_generate",
                 "llm_required": self._check_if_llm_required(template_structure),
@@ -604,13 +570,6 @@ class TemplateBuilder:
                     "validate_legal_references",
                     "ensure_consistency",
                 ],
-            },
-            # Runtime methods
-            "methods": {
-                "generate": "generate_document",
-                "validate": "validate_inputs",
-                "preview": "preview_document",
-                "export": "export_formats",
             },
         }
 
@@ -731,7 +690,7 @@ class TemplateBuilder:
                         if entity.get("text") not in examples:
                             examples.append(entity.get("text"))
 
-        return examples[:5]  # Return up to 5 examples
+        return examples
 
     def _add_variable_dependencies(self, variables: Dict[str, Variable], relationships: List[Dict]):
         """Add dependencies between variables"""
@@ -821,13 +780,8 @@ class TemplateBuilder:
     def _validate_variable_syntax(self, template: str) -> str:
         """Validate and fix variable syntax in template"""
 
-        # Ensure all variables use double braces
         template = re.sub(r"\{([A-Z_]+)\}", r"{{\1}}", template)
-
-        # Validate generation instructions
         template = re.sub(r"\[GENERATE: ([^\]]+)\]", r"[[GENERATE: \1]]", template)
-
-        # Validate conditionals
         template = re.sub(r"<IF ([^>]+)>", r"<<IF \1>>", template)
         template = re.sub(r"</IF>", r"<</IF>>", template)
 
@@ -836,10 +790,7 @@ class TemplateBuilder:
     def _clean_template_formatting(self, template: str) -> str:
         """Clean up template formatting"""
 
-        # Remove multiple blank lines
         template = re.sub(r"\n\n\n+", "\n\n", template)
-
-        # Ensure consistent spacing
         template = template.strip()
 
         return template
@@ -874,10 +825,8 @@ class TemplateBuilder:
     def _extract_variables_from_condition(self, condition: str) -> List[str]:
         """Extract variable names from condition"""
 
-        # Find all variable references
         variables = re.findall(r"\b([a-z_]+)\b", condition.lower())
 
-        # Filter to known variable patterns
         return [v for v in variables if "_" in v or v in ["age", "salary", "date"]]
 
     def _create_section_generation_instructions(
@@ -915,7 +864,6 @@ class TemplateBuilder:
     def _extract_date_format(self, raw_documents: List[str]) -> str:
         """Extract predominant date format from documents"""
 
-        # Look for date patterns
         formats = {"DD.MM.YYYY": 0, "YYYY-MM-DD": 0, "Month DD, YYYY": 0}
 
         for doc in raw_documents[:10]:
@@ -931,7 +879,6 @@ class TemplateBuilder:
     def _extract_number_format(self, raw_documents: List[str]) -> str:
         """Extract number format from documents"""
 
-        # Simple detection - in production would be more sophisticated
         for doc in raw_documents[:5]:
             if "€" in doc and "," in doc:
                 return "European"  # 1.234,56
@@ -943,12 +890,10 @@ class TemplateBuilder:
 
         elements = []
 
-        # From content patterns
         content_patterns = pattern_spec.get("content_patterns", {}).get("by_section", {})
         for section_pattern in content_patterns.values():
             elements.extend(section_pattern.get("legal_requirements", []))
 
-        # From legal language patterns
         legal_patterns = pattern_spec.get("legal_language_patterns", {})
         for category in legal_patterns.get("standard_phrases", {}).values():
             for phrase in category:
@@ -962,11 +907,9 @@ class TemplateBuilder:
 
         variables = []
 
-        # Find {{VARIABLE_NAME}} patterns
         var_matches = re.findall(r"{{([A-Z_]+)}}", template)
         variables.extend(var_matches)
 
-        # Find conditional variables
         cond_matches = re.findall(r"<<IF\s+(\w+)", template)
         variables.extend(cond_matches)
 
@@ -1010,7 +953,6 @@ class TemplateBuilder:
                 "validation": var_def["validation"],
             }
 
-            # Add type-specific properties
             if var_def["type"] == "choice":
                 field["options"] = var_def["ui_hints"].get("options", [])
             elif var_def["type"] == "date":
@@ -1018,7 +960,6 @@ class TemplateBuilder:
 
             fields.append(field)
 
-        # Sort by input order
         ordered_names = variable_system.get("input_order", [])
         fields.sort(key=lambda f: ordered_names.index(f["name"]) if f["name"] in ordered_names else 999)
 
@@ -1085,7 +1026,6 @@ class TemplateBuilder:
     def _humanize_variable_name(self, var_name: str) -> str:
         """Convert variable name to human-readable label"""
 
-        # Handle common patterns
         replacements = {
             "_name": " Name",
             "_date": " Date",
@@ -1099,7 +1039,6 @@ class TemplateBuilder:
         for old, new in replacements.items():
             label = label.replace(old, new)
 
-        # Title case
         return label.title()
 
     def _determine_input_type(self, var_type: str) -> str:
